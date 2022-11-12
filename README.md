@@ -4,8 +4,9 @@
 # **Table Of Content**
 1. [Introduction](#my_first_title)
 2. [Method](#my-second-title)
-3. [Result](#my-third-title)
-4. [Usage](#my-fourth-title)
+3. [Implementation](#my-third-title)
+4. [Result](#my-fourth-title)
+5. [Usage](#my-fifth-title)
 
 
 
