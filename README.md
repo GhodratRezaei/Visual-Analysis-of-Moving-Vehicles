@@ -86,6 +86,21 @@ Once the vehicles is detected using the artificial intelligence, the phenomena o
   
   
   Once we know the distance travelled by a particular car from one image to the following one, along with the time taken which is given by the FPS frequency with which we converted the video to the image, we were able to estimate the speed of the vehicle (equation below).
+  
+  
+  (𝐴 𝐵 𝐶 𝐷)=|𝐴𝐶∗𝐵𝐷| / |𝐵𝐶∗𝐴𝐷|
+  (𝐴 𝐵 𝐶 𝐷)=(𝐴′𝐵′𝐶′𝐷′)
+  
+  In our code, the following notations were used along with the final equation:
+  
+  
+  𝑑=(|𝑉𝑎−𝑀𝑅|∗|𝑀𝐹−𝐶𝑐|) / (|𝑀𝐹−𝑀𝑅|∗|𝑉𝑎−𝐶𝑐|)∗52 𝑚
+  
+d = Distance of the car from the front marker (m)
+Va = Vanishing point of the image scene
+MR = Marker rear in the image
+MF = Marker front in the image
+Cc = Center of the car in the image
 
 
 
