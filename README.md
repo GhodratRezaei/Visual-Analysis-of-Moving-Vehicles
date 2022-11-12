@@ -124,6 +124,19 @@ Due to unknown camera position with respect to the world reference plane in addi
    After extracting the images, we can use them in our next parts of experimentation.
    
    
+### **Vehicle Detection**
+
+#### **1. Background Removal**
+
+
+As explained in previous parts, background removal is implemented over gray scale image, and then a threshold of 60 was defined to separate the image into two parts: white part mismatch pixels and dark parts for matched pixels. Whole procedure was implemented using Python which is shown in figure below (figure 7). To track each unique vehicle along image frames, a greedy approach method was used which is a well approximated approach of marriage problem or maximum weighted bipartite matching.
+For Running the code, following code lines should be ran.
+
+
+`pip3 -r requirements.txt`
+
+   
+   
 
 
 
