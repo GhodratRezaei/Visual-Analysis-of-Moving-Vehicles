@@ -25,6 +25,9 @@ Using cross ratio invariant principle, along with the position of the two refere
 
 
 The Implementation of computer vision processes and techniques is devided into two main parts:
+*  **Vehicle Detection**
+*  **Speed Estimation**
+
 
 
 
