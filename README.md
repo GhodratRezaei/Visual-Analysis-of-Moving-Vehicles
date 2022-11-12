@@ -134,8 +134,25 @@ For Running the code, following code lines should be ran.
 
 
 `pip3 -r requirements.txt`
+`python3 main.py`
 
-   
+
+Background Removal does not yield accurate detection of the objection. As shown in figure 7 and 8, all parts of vehicles are not detected and the detected parts are not consistent, meaning that the detection accuracy is not so high.
+
+![Capture](https://user-images.githubusercontent.com/75788150/201477519-07b2ee77-15c5-42b5-a70b-d90832fff36e.PNG)
+
+
+#### **Deep Learning (Yollo5)**
+
+Using yolo for object Detection allows us to get the bounding box which is maximally matched with the object. As explained before, we use a pretrained model and did fine tunned it to the get the final network model for object detection. Input is image frame, and output is bounding box with defined circle and coordinates (figure 10). Function for bounding box of vehicles is shown in figure below. 
+
+
+
+Following figures two examples of the output from the object detection by YoloV5.
+
+
+
+
    
 
 
