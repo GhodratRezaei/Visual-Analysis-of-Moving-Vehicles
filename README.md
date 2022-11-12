@@ -30,7 +30,7 @@ The Implementation of computer vision processes and techniques is devided into t
 
 Initially we extracted a video taken from a street camera of a 3-lane street where lane markers are visible, and vehicles are traveling at high speed. As part of the image preprocessing part, firstly, the video was converted into the set of images with frequency of 30 frames per second which gives use with a total of 150 images during the span of random 15 seconds analysis from the input video. The conversion of video to images was done using the tool libraries [FFMPEG](https://www.ffmpeg.org/) and [Magick](https://cran.r-project.org/web/packages/magick/vignettes/intro.html) on Linux. After converting the video into images, the image editing was carried out in which borders of the images were edited to keep the focus on the street and till the greatest of extent, subtract the other things happening in the video (like visibility of other streets, etc.) which can later be a cause of disturbance in our analysis leading to incorrect values.
 
-### **Vehicle Detection**
+### **1. Vehicle Detection**
 #### **Classical Computer Vision Technique (Background Subtraction)
 
 
@@ -66,10 +66,26 @@ novel convolutional neural network (CNN) that detects objects in real-time with 
 
 
 
-### **Speed Calculation**
+### **2. Speed Esstimation**
 
 Once the vehicles is detected using the artificial intelligence, the phenomena of cross ratio is used in order to calculate the speed of the vehicle. The cross ratio of tuple points used the ratio of 4 points in image plane and 4 points in the planar view and use the ratio of those points which is always equal to -1 as shown in figure below:
 
+
+
+
+![Capture](https://user-images.githubusercontent.com/75788150/201474606-631f6cec-fb5a-4f58-a513-d9d7856758ac.PNG)
+
+
+
+   In the real-world planar view, point A represents the point at infinity, whereas points B and D represents the Forward Marker and Rear Marker respectively on the road and point C represents the real-world position of the car. Similarly, the corresponding values of these points are projected on the
+2-dimensional image plane where the point A’ represents the vanishing point of the image, B’ and D’ represents the position of the marker and C’ represents the position of the center of the car in the image.
+
+  From the 3-Dimensional real world prospective, we have the point A located at infinity whereas the distance between the front and the rear marker (B-D) is known to use which is equal to 52m. The distance we are calculating is the distance of the car from the front marker.
+  
+  On the other hand, in the image space, point A’ which represents the vanishing point of the image is calculated by combining the parallel line features of the vehicle moving direction and the vehicle feature. The pair of parallel lines gives us the vanishing point. Here we assume that since the vehicle is travelling in the straight direction within our region of study, the vanishing point would remain the same from image to image. However, to reduce the error in this assumption to a significant level, we calculated the vanishing point using the average of multiple vanishing points of the images we are studying. Points B’ and D’ which represents the front marker and the rear marker respectively on the image plane, would also remain the same as the position of the street and hence the lane markers remain the same with respect to the camera with which the video is being taken. The point C’, which represents the position of the vehicle on the image, is taken from the midpoint of the box position in which the vehicle is detected. The box of the image is extracted from the first part of the project related to the vehicle detection part. Using these values along with the relevant formulas given below, we were able to estimate the distance of the car from the front lane marker.
+  
+  
+  Once we know the distance travelled by a particular car from one image to the following one, along with the time taken which is given by the FPS frequency with which we converted the video to the image, we were able to estimate the speed of the vehicle (equation below).
 
 
 
