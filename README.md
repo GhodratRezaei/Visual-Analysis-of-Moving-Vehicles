@@ -41,10 +41,8 @@ Two sequential image frames are shown in figure 1 and 2, and corresponding graph
 
 
 
-![1](https://user-images.githubusercontent.com/75788150/201474373-220fc5d8-3853-4b0a-89de-2dc01e6e4751.jpg)
+![Capture](https://user-images.githubusercontent.com/75788150/201474437-01ee0a57-a423-4e1d-821e-6e8ca7bc08ae.PNG)
 
-
-![2](https://user-images.githubusercontent.com/75788150/201474378-f6bf09e1-8476-4126-9eae-8fcdde285f5b.jpg)
 
 
 
