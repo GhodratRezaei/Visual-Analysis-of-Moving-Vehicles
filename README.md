@@ -103,5 +103,21 @@ MR = Marker rear in the image
 MF = Marker front in the image
 Cc = Center of the car in the image
 
+## **Implementation**
+
+
+### **Assumption**
+
+Due to unknown camera position with respect to the world reference plane in addition to unknown camera parameters, our evaluation has some limitations as few assumptions are considered in the methodology applied:
+
+*  Since the vanishing point is extracted using the features (parallel lines) of both the lane marker and vehicle features, it goes without saying that we assume that the vehicles are running perfecting in direction of the street whereas the results of vehicles changing the lanes may be affected by this assumption
+
+*  Since for calculating the speed of the vehicles, we are using the average distance travelled in a certain time segment, the speed of the vehicle is the average speed hence we assume that the vehicle is traveling at a constant velocity.  
+*  Since the point at infinity of the image is taken to be fixed as the position of camera is fixed, the point cannot be completely accurate due to the limitation of quality of image and human error. However, to mitigate that effect, we did take the average of point at infinity of random images.
+
+
+
+
+
 
 
