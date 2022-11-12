@@ -36,7 +36,7 @@ Initially we extracted a video taken from a street camera of a 3-lane street whe
 
 In this Method, each image first was converted to gray scale. Having gray scale of each frame, each pixel value was subtracted from value of corresponding pixels in other images. In pixels with high values of differences between image frames, color of corresponding pixels leads to white color. Similarly for pixels with less difference of values, color will be more toward dark. After implementing such mask on images frame, we set threshold, upon which color can be white and lower values will be considered as dark pixel. This threshold value was defined 60 (pixel color value) in our methodologies and was set experimentally to cover larger areas which have meaningful discrepancies. One important that issue to be solved is to allocate to each vehicles a unique index which is identifiable among other object in different image frame. To solve this issue, greedy approach was implemented. Other innovative and new solution can be [marriage problem or maximum weighted bipartite matching](https://ieeexplore.ieee.org/document/6726915). Marriage problem is tracking each unique object in sequence of image frames. Challenge of object detection appears when we have object with similar size and shape in different image frames. To solve this problem, global optimization algorithm can be implemented over whole sequence of image frame. This global optimization algorithm has sub-optimization part in each image frame. To obtain stable tracking results, we propose a tracking method based on global optimization. Particularly, we first detect each individual vehicle in each image frame by background removal method, then formulate the multiple objects tracking problem as a combinatorial optimization problem over a pair of consecutive frames and solve the problem by the greedy approach algorithm. The target would be allocating a unique index to each unique vehicle in image frames which it is appeared, so that overall score of allocations is maximum over the image frames or equivalently total dissimilarity of objects over images gets minimum.
 
-Two sequential image frames are shown in figure 1 and 2, and corresponding graph algorithm and greed search are shown in figures below:
+Two sequential image frames are shown in figures belows:
 
 
 
@@ -44,6 +44,8 @@ Two sequential image frames are shown in figure 1 and 2, and corresponding graph
 ![Capture](https://user-images.githubusercontent.com/75788150/201474437-01ee0a57-a423-4e1d-821e-6e8ca7bc08ae.PNG)
 
 
+
+corresponding graph algorithm and greed search are also shown in figures below:
 
 
 
