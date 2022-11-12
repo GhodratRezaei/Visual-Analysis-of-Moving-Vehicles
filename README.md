@@ -25,8 +25,10 @@ Using cross ratio invariant principle, along with the position of the two refere
 
 
 The Implementation of computer vision processes and techniques is devided into two main parts:
-*  **Vehicle Detection**
-*  **Speed Estimation**
+*  **1. Vehicle Detection**
+*  **2. Speed Estimation**
+
+Initially we extracted a video taken from a street camera of a 3-lane street where lane markers are visible, and vehicles are traveling at high speed. As part of the image preprocessing part, firstly, the video was converted into the set of images with frequency of 30 frames per second which gives use with a total of 150 images during the span of random 15 seconds analysis from the input video. The conversion of video to images was done using the tool libraries FFMPEG and Magick on Linux. After converting the video into images, the image editing was carried out in which borders of the images were edited to keep the focus on the street and till the greatest of extent, subtract the other things happening in the video (like visibility of other streets, etc.) which can later be a cause of disturbance in our analysis leading to incorrect values.
 
 
 
