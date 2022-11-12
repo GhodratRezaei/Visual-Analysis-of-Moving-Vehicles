@@ -5,7 +5,7 @@
 1. [Introduction](#my_first_title)
 2. [Method](#my-second-title)
 3. [Implementation](#my-third-title)
-4. [Result](#my-fourth-title)
+4. [Result and Conclusion](#my-fourth-title)
 5. [Usage](#my-fifth-title)
 
 
@@ -130,11 +130,7 @@ Due to unknown camera position with respect to the world reference plane in addi
 
 
 As explained in previous parts, background removal is implemented over gray scale image, and then a threshold of 60 was defined to separate the image into two parts: white part mismatch pixels and dark parts for matched pixels. Whole procedure was implemented using Python which is shown in figure below (figure 7). To track each unique vehicle along image frames, a greedy approach method was used which is a well approximated approach of marriage problem or maximum weighted bipartite matching.
-For Running the code, following code lines should be ran.
 
-
-`pip3 -r requirements.txt`
-`python3 main.py`
 
 
 Background Removal does not yield accurate detection of the objection. As shown in figure 7 and 8, all parts of vehicles are not detected and the detected parts are not consistent, meaning that the detection accuracy is not so high.
@@ -144,18 +140,90 @@ Background Removal does not yield accurate detection of the objection. As shown 
 
 #### **Deep Learning (Yollo5)**
 
-Using yolo for object Detection allows us to get the bounding box which is maximally matched with the object. As explained before, we use a pretrained model and did fine tunned it to the get the final network model for object detection. Input is image frame, and output is bounding box with defined circle and coordinates (figure 10). Function for bounding box of vehicles is shown in figure below. 
+Using yolo for object Detection allows us to get the bounding box which is maximally matched with the object. As explained before, we use a pretrained model and did fine tunned it to the get the final network model for object detection. Input is image frame, and output is bounding box with defined circle and coordinates. 
 
 
 
 Following figures two examples of the output from the object detection by YoloV5.
 
+![Capture](https://user-images.githubusercontent.com/75788150/201477655-5377b530-8890-4050-9254-855ed51e8434.PNG)
 
+
+
+
+![Capture](https://user-images.githubusercontent.com/75788150/201477683-07f2a12d-9065-49ec-84b8-b15a3f8e56b0.PNG)
+
+
+
+
+### **Vehicle Counting**
+
+Vehicle counting is done inside function Process_bounding_box in [main.py](https://github.com/GhodratRezaei/Visual-Analysis-of-Moving-Vehicles/blob/main/main.py) file.
+
+
+
+
+![Capture](https://user-images.githubusercontent.com/75788150/201477783-51bdad51-9607-43f5-a2d4-a051f8e4cd8a.PNG)
 
 
    
+### **Average of Vanishing Points:**
 
 
+
+In order minimize the error of the vanishing point we estimated for our experimentation, we calculated vanishing points of random images and then took the average of it. This way any human error, or error due to selection of the parallel lines is minimized.
+In figure below, we constructed a pair of parallel lines, one using the vehicle feature and the other using the street feature.
+
+
+![Capture](https://user-images.githubusercontent.com/75788150/201477843-8f13a7bd-2f5e-426e-b15a-82cf36797a4c.PNG)
+
+Following the construction of parallel lines, we can estimate the vanishing point of the image with the help of the intersection point of these two parallel lines. In the figure below, we can see that the vanishing point is located at the top of the image, that is in the direction of vehicle movement. In addition to this, here we can also see the location of the markers located on the street which is taken as the reference point. The front marker is labelled as ‘b’ and the rear marker is labelled as ‘a’. The distance between these two points is 52m which was calculated using the standard distance of the markers. The two marker points and the vanishing point is considered fixed for all the images; hence it is given as input to the system.
+
+
+
+
+
+
+
+![Capture](https://user-images.githubusercontent.com/75788150/201477870-bec2dd4d-f9ea-4909-b0c0-388de16e731f.PNG)
+
+
+
+### **Speed Estimation**
+
+Using the vehicle detection ability, we can track the vehicles from one image to the subsequent ones. This feature, combined with the cross ratio of tuple points, where the four points of the image plane is compared with the real-world points (details explained in the methodology section above), we can estimate the distance of the detected vehicle and the reference markers. Since a particular vehicle is detected until it crosses the second marker on the street, we can get the time taken by the vehicle to travel the specified distance (between the two labelled markers). This allows us to estimate the average speed of that vehicle. 
+
+
+In the following Figures, the average speed of each car is visible which is calculated using the time taken by the car to cross the two markers whose distance is pre-defined in the previous part.
+
+
+
+
+![Capture](https://user-images.githubusercontent.com/75788150/201477915-f68c0b36-2eb6-4684-9236-be151bfabd6e.PNG)
+
+
+
+As can be seen in figure above, average speed of each car has is shown in red rectangle and the unit is m/s. The speed values make sense in real-world. As an example, speed of 20 (m/s) is equal to 72(km/h) and in highway it is standard speed for car.
+
+
+
+
+
+## **Result and Conclusion**
+
+
+The results of the average speed estimated of the cars along with the counter value, is somehow acceptable. Furthermore, while implementing the cross-ratio algorithm, the distance between the front marker and the card was also checked with the estimated value of the real-world distance using the values of distance between the markers, which were also acceptable. This concludes that the methodologies implemented in this experimentation which includes the conversion of the video to images, followed by vehicle detection, estimation of vanishing points and tracking of the vehicle using the greedy approach some what gives an acceptable set of results.
+However, due to the initial assumptions we considered, there may be some errors, specially for cars changing lane in between the region of study as it would no longer hold on to the assumption that the car is parallel to the street in the real world. Furthermore, there might be cars which are accelerating or decelerating in the region between two markers, resulting in incorrect average speed estimation.
+Improvements can be brought to the experiment in many ways. Firstly, a better-quality camera with higher resolution would enable better estimation of the vanishing point as it would reduce the error while drawing the parallel lines. Secondly, we can use an alternative way of vehicle tracking known as marriage problem instead of greedy approach which would be more intrinsic but will give better results. Thirdly, smaller, and multiple segments of regions can be chosen to study instead of just one as in our case. This would increase the mathematical complexity of the program but would give a better estimation of speed specially for vehicle who are accelerating / decelerating while driving. Lastly, the camera intrinsic parameters along with the position of camera with respect to world coordinates can be easily calculated in the real world for situations like these. Once they are calculated, the camera geometry can be put to use which would also give a better result in terms of image projection and rectification which then can be further processed to estimate our desired parameters.
+
+
+
+## **Usage**
+For Running the code, following code lines should be ran.
+
+
+`pip3 -r requirements.txt`
+`python3 main.py`
 
 
 
