@@ -28,7 +28,7 @@ The Implementation of computer vision processes and techniques is devided into t
 *  **1. Vehicle Detection**
 *  **2. Speed Estimation**
 
-Initially we extracted a video taken from a street camera of a 3-lane street where lane markers are visible, and vehicles are traveling at high speed. As part of the image preprocessing part, firstly, the video was converted into the set of images with frequency of 30 frames per second which gives use with a total of 150 images during the span of random 15 seconds analysis from the input video. The conversion of video to images was done using the tool libraries FFMPEG and Magick on Linux. After converting the video into images, the image editing was carried out in which borders of the images were edited to keep the focus on the street and till the greatest of extent, subtract the other things happening in the video (like visibility of other streets, etc.) which can later be a cause of disturbance in our analysis leading to incorrect values.
+Initially we extracted a video taken from a street camera of a 3-lane street where lane markers are visible, and vehicles are traveling at high speed. As part of the image preprocessing part, firstly, the video was converted into the set of images with frequency of 30 frames per second which gives use with a total of 150 images during the span of random 15 seconds analysis from the input video. The conversion of video to images was done using the tool libraries [FFMPEG](https://www.ffmpeg.org/) and [Magick](https://cran.r-project.org/web/packages/magick/vignettes/intro.html) on Linux. After converting the video into images, the image editing was carried out in which borders of the images were edited to keep the focus on the street and till the greatest of extent, subtract the other things happening in the video (like visibility of other streets, etc.) which can later be a cause of disturbance in our analysis leading to incorrect values.
 
 ### **Vehicle Detection**
 #### **Classical Computer Vision Technique (Background Subtraction)
@@ -36,6 +36,15 @@ Initially we extracted a video taken from a street camera of a 3-lane street whe
 
 In this Method, each image first was converted to gray scale. Having gray scale of each frame, each pixel value was subtracted from value of corresponding pixels in other images. In pixels with high values of differences between image frames, color of corresponding pixels leads to white color. Similarly for pixels with less difference of values, color will be more toward dark. After implementing such mask on images frame, we set threshold, upon which color can be white and lower values will be considered as dark pixel. This threshold value was defined 60 (pixel color value) in our methodologies and was set experimentally to cover larger areas which have meaningful discrepancies. One important that issue to be solved is to allocate to each vehicles a unique index which is identifiable among other object in different image frame. To solve this issue, greedy approach was implemented. Other innovative and new solution can be [marriage problem or maximum weighted bipartite matching](https://ieeexplore.ieee.org/document/6726915). Marriage problem is tracking each unique object in sequence of image frames. Challenge of object detection appears when we have object with similar size and shape in different image frames. To solve this problem, global optimization algorithm can be implemented over whole sequence of image frame. This global optimization algorithm has sub-optimization part in each image frame. To obtain stable tracking results, we propose a tracking method based on global optimization. Particularly, we first detect each individual vehicle in each image frame by background removal method, then formulate the multiple objects tracking problem as a combinatorial optimization problem over a pair of consecutive frames and solve the problem by the greedy approach algorithm. The target would be allocating a unique index to each unique vehicle in image frames which it is appeared, so that overall score of allocations is maximum over the image frames or equivalently total dissimilarity of objects over images gets minimum.
 
+Two sequential image frames are shown in figure 1 and 2, and corresponding graph algorithm and greed search are shown in figures below:
+
+
+
+
+![1](https://user-images.githubusercontent.com/75788150/201474373-220fc5d8-3853-4b0a-89de-2dc01e6e4751.jpg)
+
+
+![2](https://user-images.githubusercontent.com/75788150/201474378-f6bf09e1-8476-4126-9eae-8fcdde285f5b.jpg)
 
 
 
