@@ -47,5 +47,21 @@ Two sequential image frames are shown in figures belows:
 
 corresponding graph algorithm and greed search are also shown in figures below:
 
+![Capture](https://user-images.githubusercontent.com/75788150/201474491-39d4e76b-c879-4c07-a0e5-84648614ed29.PNG)
+
+
+#### **Deep Learning Method**
+
+
+Object detection using deep learning method is faster and accurate. In this project YOLO version 5 was implemented, which is now the most advanced object identification algorithm available. It is a
+novel convolutional neural network (CNN) that detects objects in real-time with great accuracy. This approach uses a single neural network to process the entire picture, then separates it into parts and predicts bounding boxes and probabilities for each bounding box candidate (patch). These bounding boxes are weighted by the expected probability. So, we are dealing with both classification and regression problem; classification of object and assign to it a certain label which are preserved during whole image frame sequences and regression which certify the coordinates of the object (length and wide of bounding box and coordinates of upper right part of rectangular). Using a pre-trained model, we implement transfer learning and fine tuning to train whole multi-Layer-perceptions and potions of convolutional layers. To be mentioned that we did not use the label of objects, because it is not important in this project. To match certain objects in each image frame, greedy approach was implemented which was explained in previous method.
+
+
+
+### **Speed Calculation**
+
+Once the vehicles is detected using the artificial intelligence, the phenomena of cross ratio is used in order to calculate the speed of the vehicle. The cross ratio of tuple points used the ratio of 4 points in image plane and 4 points in the planar view and use the ratio of those points which is always equal to -1 as shown in figure below:
+
+
 
 
