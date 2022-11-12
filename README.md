@@ -117,6 +117,16 @@ Due to unknown camera position with respect to the world reference plane in addi
 
 
 
+## **Conversion of Video to JPEG:**
+
+   As very first step we converted a video of 30 minutes to images with frequency of 30 frames per second. The conversion of video to images was done using the tool libraries FFMPEG and Image Magick on Linux. The command below was executed on the Linux to convert the video to the images (figure 6). For the ease of experimentation, we are just considering the time slot of 15 seconds, hence the consecutive number of images we study are 150.
+   
+   
+   
+   After extracting the images, we can use them in our next parts of experimentation.
+   
+
+
 
 
 
