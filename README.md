@@ -58,6 +58,14 @@ novel convolutional neural network (CNN) that detects objects in real-time with 
 
 
 
+
+
+
+
+
+
+
+
 ### **Speed Calculation**
 
 Once the vehicles is detected using the artificial intelligence, the phenomena of cross ratio is used in order to calculate the speed of the vehicle. The cross ratio of tuple points used the ratio of 4 points in image plane and 4 points in the planar view and use the ratio of those points which is always equal to -1 as shown in figure below:
